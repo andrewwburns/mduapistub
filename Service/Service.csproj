@@ -208,7 +208,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\Request\AuditRequest.cs" />
     <Compile Include="Models\Request\RefreshAccountRequest.cs" />
+    <Compile Include="Models\Response\AuditResponse.cs" />
     <Compile Include="Models\Response\BaseResult.cs" />
     <Compile Include="Models\Request\LoginRequest.cs" />
     <Compile Include="Models\Request\RegisterRequest.cs" />
