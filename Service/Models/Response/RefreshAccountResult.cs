@@ -34,7 +34,7 @@ namespace Service.Models.Response
             public string UserName { get; set; }
             public string Password { get; set; }
             public Guid SessionId { get; set; }
-            public decimal PartyId { get; set; }
+            public string PartyId { get; set; }
             [JsonProperty(PropertyName = "MDUNumber")]
             public string MduNumber { get; set; }
             public string Title { get; set; }
@@ -72,7 +72,7 @@ namespace Service.Models.Response
             [JsonProperty(PropertyName = "SessionGuid")]
             public Guid SessionGuid { get; set; }
             [JsonProperty(PropertyName = "PartyId")]
-            public decimal PartyId { get; set; }
+            public string PartyId { get; set; }
             [JsonProperty(PropertyName = "Username")]
             public string Username { get; set; }
             [JsonProperty(PropertyName = "ValidationCode")]

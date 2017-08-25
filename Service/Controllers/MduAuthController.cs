@@ -88,7 +88,7 @@ namespace Service.Controllers
             rfsh.MemberDetails.UserName = name;
             rfsh.MemberDetails.Password = null;
             rfsh.MemberDetails.SessionId = sessionid;
-            rfsh.MemberDetails.PartyId = decimal.Parse(PadNumber(7));
+            rfsh.MemberDetails.PartyId = PadNumber(7);
             rfsh.MemberDetails.MduNumber = PadNumber(6) + name[0];
             rfsh.MemberDetails.Title = _titles[r.Next(_titles.Length)];
             rfsh.MemberDetails.Forename = name;
