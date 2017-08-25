@@ -8,7 +8,7 @@ namespace Service.Models.Request
     public class AuditRequest
     {
         public string FunctionName { get; set; }
-        public int PartyID { get; set; }
+        public string PartyID { get; set; }
         public Guid SessionEGUID { get; set; }
         public Guid PlatformID { get; set; }
         public DateTime RequestReceivedDateTime { get; set; }

@@ -6,6 +6,8 @@ using System.Web.Http;
 using System.Web.Mvc;
 using Service.Models.Response;
 using Service.Models.Request;
+using System.IO;
+using Newtonsoft.Json;
 
 namespace Service.Controllers
 {
@@ -206,6 +208,10 @@ namespace Service.Controllers
             {
                 AuditRequestResult = true
             };
+
+            string fullSavePath = HttpContext.Current.Server.MapPath($"~/App_Data/Log_{DateTime.Now.ToString("yyyyMMdd")}.txt");
+
+            File.AppendAllText(fullSavePath, $"{DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss")} - {JsonConvert.SerializeObject(audit)}\n");
 
             if (sessionObject == null)
             {
