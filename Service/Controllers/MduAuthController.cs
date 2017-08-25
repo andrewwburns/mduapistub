@@ -193,5 +193,25 @@ namespace Service.Controllers
                 return Json(new RefreshAccountResult());
             }
         }
+
+        [System.Web.Http.HttpPost]
+        [System.Web.Http.Route("Audit")]
+        public IHttpActionResult Audit(AuditRequest audit)
+        {
+            if (!ModelState.IsValid) // if Audit is invalid
+            {
+                return BadRequest();
+            }
+            var sessionObject = new AuditResponse()
+            {
+                AuditRequestResult = true
+            };
+
+            if (sessionObject == null)
+            {
+                return NotFound();
+            }
+            return Ok(sessionObject);
+        }
     }
 }
