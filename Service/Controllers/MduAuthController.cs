@@ -53,7 +53,7 @@ namespace Service.Controllers
 
         private string PadNumber(int length)
         {
-            Random r = new Random();
+            Random r = new Random(DateTime.Now.Day);
             string s = "";
             for (int i = 0; i < length; i++)
             {
@@ -69,7 +69,7 @@ namespace Service.Controllers
 
         private string Postcode()
         {
-            Random r = new Random();
+            Random r = new Random(DateTime.Now.Day);
             string s = "";
             s += (char)(r.Next(26) + 65);
             s += (char)(r.Next(26) + 65);
@@ -84,7 +84,7 @@ namespace Service.Controllers
 
         private RefreshAccountResult MakeRefreshResult(string name, string surname, Guid sessionid)
         {
-            Random r = new Random();
+            Random r = new Random(DateTime.Now.Day);
             RefreshAccountResult rfsh = new RefreshAccountResult();
 
             rfsh.MemberDetails.UserName = name;
@@ -110,9 +110,9 @@ namespace Service.Controllers
             rfsh.MemberDetails.ElligibleForCQC = (r.Next(2) == 1);
             rfsh.MemberDetails.Groups = "";
             rfsh.MemberDetails.GroupBenefits = "";
-            rfsh.MemberDetails.IsMember = (r.Next(2) == 1);
+            rfsh.MemberDetails.IsMember = (((int)name[0]) % 2 ) == 1 ;
             rfsh.MemberDetails.ValidationCode = "0";
-            rfsh.MemberDetails.ValidationDescription = "Quite what this is for escapes me.";
+            rfsh.MemberDetails.ValidationDescription = "Ok";
             rfsh.MemberDetails.Successful = true;
 
             rfsh.MduSessionObject.Valid = true;
