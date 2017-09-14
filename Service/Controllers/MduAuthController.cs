@@ -38,12 +38,12 @@ namespace Service.Controllers
             _basicResults.Add("fred-password", new BaseResult { SessionGuid = _validSessions[5], ValidationCode = "0", ValidationDescription = "Is Valid", Successful = true });
 
             _refreshResults = new Dictionary<Guid, RefreshAccountResult>();
-            _refreshResults.Add(_validSessions[0], MakeRefreshResult("Alice", "Aaronson", _validSessions[0]));
-            _refreshResults.Add(_validSessions[1], MakeRefreshResult("Bob", "Brown", _validSessions[0]));
-            _refreshResults.Add(_validSessions[2], MakeRefreshResult("Charles", "Charlesworthy", _validSessions[0]));
-            _refreshResults.Add(_validSessions[3], MakeRefreshResult("Doris", "Day", _validSessions[0]));
-            _refreshResults.Add(_validSessions[4], MakeRefreshResult("Eve", "Edwards", _validSessions[0]));
-            _refreshResults.Add(_validSessions[5], MakeRefreshResult("Fred", "Flinstone", _validSessions[0]));
+            _refreshResults.Add(_validSessions[0], MakeRefreshResult("Alice", "Aaronson", "GP", _validSessions[0]));
+            _refreshResults.Add(_validSessions[1], MakeRefreshResult("Bob", "Brown", "COSP", _validSessions[1]));
+            _refreshResults.Add(_validSessions[2], MakeRefreshResult("Charles", "Charlesworthy", "MSTU", _validSessions[2]));
+            _refreshResults.Add(_validSessions[3], MakeRefreshResult("Doris", "Day", "DCP" ,_validSessions[3]));
+            _refreshResults.Add(_validSessions[4], MakeRefreshResult("Eve", "Edwards", "DSTU", _validSessions[4]));
+            _refreshResults.Add(_validSessions[5], MakeRefreshResult("Fred", "Flinstone", "BRK", _validSessions[5]));
 
         }
 
@@ -82,7 +82,7 @@ namespace Service.Controllers
             return s;
         }
 
-        private RefreshAccountResult MakeRefreshResult(string name, string surname, Guid sessionid)
+        private RefreshAccountResult MakeRefreshResult(string name, string surname, string segment, Guid sessionid)
         {
             Random r = new Random(DateTime.Now.Day);
             RefreshAccountResult rfsh = new RefreshAccountResult();
@@ -103,7 +103,7 @@ namespace Service.Controllers
             rfsh.MemberDetails.PhoneNumber = "07" + PadNumber(8);
             rfsh.MemberDetails.VIPStatus = _vip[r.Next(_vip.Length)];
             rfsh.MemberDetails.QualifyingSchoolName = "";
-            rfsh.MemberDetails.Segment = "GP";
+            rfsh.MemberDetails.Segment = segment;
             rfsh.MemberDetails.SubSegment = "NOPR";
             rfsh.MemberDetails.MemberStatus = "";
             rfsh.MemberDetails.MembershipStatus = rfsh.MemberDetails.MemberStatus;
@@ -122,6 +122,14 @@ namespace Service.Controllers
             rfsh.MduSessionObject.ValidationCode = rfsh.MemberDetails.ValidationCode;
             rfsh.MduSessionObject.ValidationDescription = rfsh.MemberDetails.ValidationDescription;
             rfsh.MduSessionObject.Successful = rfsh.MemberDetails.Successful;
+
+
+            if(!rfsh.MemberDetails.IsMember)
+            {
+                rfsh.MemberDetails.PartyId = null;
+                rfsh.MduSessionObject.PartyId = null;
+            }
+
 
             return rfsh;
         }
