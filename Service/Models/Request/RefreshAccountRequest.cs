@@ -8,11 +8,9 @@ namespace Service.Models.Request
 {
     public class RefreshAccountRequest
     {
-        [JsonProperty(PropertyName = "AuthToken")]
-        public Guid AuthToken { get; set; }
-        [JsonProperty(PropertyName = "AuthPlatformId")]
-        public Guid AuthPlatformId { get; set; }
-        [JsonProperty(PropertyName = "Funcationname")]
-        public string FunctionName { get; set; }
+        [JsonProperty(PropertyName = "SessionGuid")]
+        public Guid SessionGuid { get; set; }
+        [JsonProperty(PropertyName = "PlatformId")]
+        public Guid PlatformId { get; set; }
     }
 }

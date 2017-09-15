@@ -38,6 +38,12 @@ namespace Service.Models.Request
 
             [JsonProperty(PropertyName = "LastName")]
             public string LastName { get; set; }
+
+            [JsonProperty(PropertyName = "Country")]
+            public string Country { get; set; }
+
+            [JsonProperty(PropertyName = "Role")]
+            public string Role { get; set; }
         }
 
         public RegisterRequest()

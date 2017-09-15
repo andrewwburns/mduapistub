@@ -52,6 +52,9 @@ namespace Service.Models.Response
             public string QualifyingSchoolName { get; set; }
             public string Segment { get; set; }  //e.g. GP
             public string SubSegment { get; set; } // e.g. NOPR
+            public string Role { get; set; }
+            public string Region { get; set; }
+
             public string MemberStatus { get; set; }
             public string MembershipStatus { get; set; } // how are these different?
             public bool ElligibleForCQC { get; set; }
