@@ -57,7 +57,7 @@ namespace Service.Controllers
             _refreshResults.Add(_validSessions[0], MakeRefreshResult("Alice", "Aaronson", "GP", _validSessions[0]));
             _refreshResults.Add(_validSessions[1], MakeRefreshResult("Bob", "Brown", null, _validSessions[1]));
             _refreshResults.Add(_validSessions[2], MakeRefreshResult("Charles", "Charlesworthy", "MSTU", _validSessions[2]));
-            _refreshResults.Add(_validSessions[3], MakeRefreshResult("Doris", "Day", "DCP" ,_validSessions[3]));
+            _refreshResults.Add(_validSessions[3], MakeRefreshResult("Doris", "Day", "ZZZ" ,_validSessions[3]));
             _refreshResults.Add(_validSessions[4], MakeRefreshResult("Eve", "Edwards", "DSTU", _validSessions[4]));
             _refreshResults.Add(_validSessions[5], MakeRefreshResult("Fred", "Flinstone", "BRK", _validSessions[5]));
 
@@ -134,7 +134,6 @@ namespace Service.Controllers
 
             rfsh.MduSessionObject.Username = name;
 
-            rfsh.MemberDetails.Region = _regions.ElementAt(r.Next(_regions.Count)).ToString("B");
             rfsh.MemberDetails.IsMember = !string.IsNullOrEmpty(segment);
 
             if (!rfsh.MemberDetails.IsMember)
@@ -143,6 +142,7 @@ namespace Service.Controllers
                 rfsh.MemberDetails.SubSegment = null;
                 rfsh.MemberDetails.PartyId = null;
                 rfsh.MemberDetails.Role = _roles.ElementAt(r.Next(_roles.Count)).ToString("B");
+                rfsh.MemberDetails.Region = _regions.ElementAt(r.Next(_regions.Count)).ToString("B");
 
                 rfsh.MduSessionObject.PartyId = null;
 
@@ -153,6 +153,7 @@ namespace Service.Controllers
                 rfsh.MemberDetails.SubSegment = "NOPR";
                 rfsh.MemberDetails.PartyId = PadNumber(7);
                 rfsh.MemberDetails.Role = null; //GetRole(segment)?.ToString("B");
+                rfsh.MemberDetails.Region = null;
 
                 rfsh.MduSessionObject.PartyId = rfsh.MemberDetails.PartyId;
             }
