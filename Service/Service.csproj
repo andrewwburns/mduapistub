@@ -210,6 +210,8 @@
     </Compile>
     <Compile Include="Models\Request\AuditRequest.cs" />
     <Compile Include="Models\Request\RefreshAccountRequest.cs" />
+    <Compile Include="Models\Request\UpdateNonMemberRequest.cs" />
+    <Compile Include="Models\Request\UpdatePasswordRequest.cs" />
     <Compile Include="Models\Response\AuditResponse.cs" />
     <Compile Include="Models\Response\BaseResult.cs" />
     <Compile Include="Models\Request\LoginRequest.cs" />
@@ -217,6 +219,8 @@
     <Compile Include="Models\Response\LoginResult.cs" />
     <Compile Include="Models\Response\RefreshAccountResult.cs" />
     <Compile Include="Models\Response\RegistrationResult.cs" />
+    <Compile Include="Models\Response\UpdateNonMemberResult.cs" />
+    <Compile Include="Models\Response\UpdatePasswordResult..cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>

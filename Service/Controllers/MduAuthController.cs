@@ -225,6 +225,37 @@ namespace Service.Controllers
         }
 
         [System.Web.Http.HttpPost]
+        [System.Web.Http.Route("UpdateNonMember")]
+        public IHttpActionResult UpdateNonMember([FromBody] UpdateNonMemberRequest model)
+        {
+            var result = new UpdateNonMemberResult()
+            {
+                SessionGuid = model.SessionGuid,
+                ValidationCode = 0.ToString(),
+                ValidationDescription = "User Updated (Stub)",
+                Successful = true
+            };
+
+            return Json(result);   
+        }
+
+        [System.Web.Http.HttpPost]
+        [System.Web.Http.Route("UpdatePassword")]
+        public IHttpActionResult UpdatePassword([FromBody] UpdatePasswordRequest model)
+        {
+            var result = new UpdatePasswordResult()
+            {
+                SessionGuid = model.SessionGuid,
+                ValidationCode = 0.ToString(),
+                ValidationDescription = "User Password Updated (Stub)",
+                Successful = true
+            };
+
+            return Json(result);
+        }
+
+
+        [System.Web.Http.HttpPost]
         [System.Web.Http.Route("RefreshAccountInfo")]
         public IHttpActionResult RefreshAccountInfo([FromBody] RefreshAccountRequest model)
         {
